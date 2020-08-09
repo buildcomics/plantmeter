@@ -1,6 +1,6 @@
 # Plant Meter
 This is the GitHub repository for <TODO>.
-It contains arduino code in the folder named "arduino_plantmeter"
+It contains arduino code in the folder named "arduino_plantmeter".
 
 
 ## Wiring
