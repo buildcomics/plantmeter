@@ -1,4 +1,3 @@
-//#include <Wire.h>
 unsigned long int previousMillis = 0;
 /* PWM vals vs output
  *  0 = 25
@@ -22,18 +21,6 @@ const byte pwmLen = 7; //make sure BOTH arrays are same length!
 const unsigned int adcVals[]      = {300, 400, 568, 780}; //array with ADC values
 const byte         adcMeterVals[] = {  0,   2,   4,   6}; //array with Corresponding meter values
 const byte adcLen = 4; //make sure BOTH arrays are same length!
-//                0   10  20  30  40  50  60  70  80  90   100
-
-/*byte pwmvals[] = {25, 26, 32, 39, 47, 57, 67, 80, 95, 115, 155};
-String inputString = "";         // a String to hold incoming data
-bool stringComplete = false;  // whether the string is complete
-int adc, adc_max,adc_min,adc_number;
-unsigned long adc_total;
-const int MIC = 0; //the microphone amplifier output is connected to pin A0
-bool sval=false;
-
-unsigned long previousMillis = 0;        //last time of stop
-int fadeValue = 5;*/
 
 const long interval = 400;           // refresh rate
 void setup() {
@@ -56,7 +43,7 @@ void loop() {
     Serial.print("Analog input: ");
     Serial.println(adc);
 
-    /* Below we will determine the PWM value to write based on the ADC input and our "calibration values". 
+    /* Below we will determine the PWM value to write based on the ADC input and our "calibration values".
      *  It is rather cumbersome, and could possibly be simpler since our current calibration vals are mostly linear,
      *  but this will work also with more non-linear sensors (in which case you should use much smaller spaced calibration values)
      *  I have even generated this in excel, but I since then got lazy and let the arduino do the hard work.
@@ -89,7 +76,7 @@ void loop() {
     for (i = 0; i < pwmLen; i++) {
       Serial.print(i);
       Serial.print(";");
-      if (pwmMeterVals[i] > meterOutput) {// we reached our limit or end. 
+      if (pwmMeterVals[i] > meterOutput) {// we reached our limit or end.
         Serial.println("hold");
         break;
       }
@@ -103,12 +90,10 @@ void loop() {
       pwmDiff = pwmVals[i] - pwmVals[i-1]; //difference in pwm output, e.g. 8 for 0.5;
       meterDiff = pwmMeterVals[i] - pwmMeterVals[i-1]; //difference in meter output, 1 for 0.5;
       delta = (float)pwmDiff/meterDiff;
-      pwmOutput = pwmVals[i-1] + delta*(meterOutput - pwmMeterVals[i-1]); //25 + (the difference in meter value (1) / pwm difference (8) = ) 0.125 * (meter value - bottom meter value = ) 0.5 = 
+      pwmOutput = pwmVals[i-1] + delta*(meterOutput - pwmMeterVals[i-1]); //25 + (the difference in meter value (1) / pwm difference (8) = ) 0.125 * (meter value - bottom meter value = ) 0.5 =
     }
     Serial.print("PWM output: " );
-    Serial.println(pwmOutput);   
+    Serial.println(pwmOutput);
     OCR2A = pwmOutput;
  }
-
-
 }
