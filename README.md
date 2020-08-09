@@ -1,5 +1,5 @@
 # Plant Meter
-This is the GitHub repository for <TODO>.
+This is the GitHub repository for https://buildcomics.com/meters/arduino-hero-toolbox-the-plantmeter/.
 It contains arduino code in the folder named "arduino_plantmeter".
 
 
@@ -10,6 +10,10 @@ The types I used are in the schematic below, but other types might just work as 
 
 The moisture sensor is an Iduino ME110, like here: https://www.conrad.nl/p/iduino-me110-bodemvochtigheidssensor-1616242
 It is wired to the A1 analog input of the arduino nano.
+
+The circuit will draw up to 500mA with the plantmeter coil. Other coils can have different current draws.
+
+For using moving coils with arduino, see https://buildcomics.com/uncategorized/ts-temperature-humidity-meter/.
 
 ## Plates
 The plates (and intermediate steps) are stored as gimp files, check https://www.gimp.org for more information about that editor, it's free!
